@@ -1,0 +1,20 @@
+<div class = 'room-list'>
+  <% @rooms.each do |x| %>
+    <%= link_to x.name, room_path(x.id) %>
+    <br/>
+  <% end %>
+  <%= link_to 'Edit', edit_room_path(@room) %> |
+  <%= link_to 'Back', rooms_path %>
+</div>
+
+<div class = 'message-list'>
+  <% @messages.each do |x| %>
+    <%= x.user.name %> : <%= x.text %> <br>
+  <% end %>
+  <div class = 'new-message'>
+    <%= form_for([@room, @room.messages.build], html: {class: 'form-inline message-form'}) do |f| %>
+      <%= f.text_area :text, class: 'form-control', rows: 1, cols: 70 %>
+      <%= f.submit 'submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
