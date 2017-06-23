@@ -1,20 +1,17 @@
+<h2 data-room-id='<%= @room.id %>'><%= @room.name %></h2>
 <div class = 'room-list'>
   <% @rooms.each do |x| %>
     <%= link_to x.name, room_path(x.id) %>
     <br/>
   <% end %>
-  <%= link_to 'Edit', edit_room_path(@room) %> |
-  <%= link_to 'Back', rooms_path %>
+  <!-- <%#= link_to 'Edit', edit_room_path(@room) %> |
+  <%#= link_to 'Back', rooms_path %> -->
+  <%= link_to 'Create a New Room', new_room_path %>
 </div>
-
-<div class = 'message-list'>
-  <% @messages.each do |x| %>
-    <%= x.user.name %> : <%= x.text %> <br>
+<%= render 'messages' %>
+<div class = 'new-message'>
+  <%= form_for([@room, @room.messages.build], remote: true, html: {class: 'form-inline message-form'}) do |f| %>
+    <%= f.text_area :text, class: 'form-control', rows: 1, cols: 70 %>
+    <%= f.submit 'submit', class: 'btn btn-primary' %>
   <% end %>
-  <div class = 'new-message'>
-    <%= form_for([@room, @room.messages.build], html: {class: 'form-inline message-form'}) do |f| %>
-      <%= f.text_area :text, class: 'form-control', rows: 1, cols: 70 %>
-      <%= f.submit 'submit', class: 'btn btn-primary' %>
-    <% end %>
-  </div>
-</div>
+</div> <!-- /new-message -->

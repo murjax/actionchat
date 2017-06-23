@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'rooms#show', id: 1
   end
+  mount ActionCable.server => '/cable'
 end

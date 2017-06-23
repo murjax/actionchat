@@ -1,0 +1,5 @@
+<div class='message-list'>
+  <% @messages.each do |message| %>
+    <%= render partial: "messages/message", locals: { message: message } %>
+  <% end %>
+</div> <!-- /message-list -->

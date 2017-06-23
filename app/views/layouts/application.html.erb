@@ -13,8 +13,9 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class='container'>
-      <h1>Action Chat</h1>
+      <h1>Chat Application Demo</h1>
       <%= yield %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
     </div>
   </body>
 </html>
