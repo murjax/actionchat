@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   authenticate :user do
     resources :rooms do
       resources :messages
@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   end
   resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_scope :user do
-    root to: 'rooms#show', id: 1
-  end
+  root to: 'rooms#show', id: 1
   mount ActionCable.server => '/cable'
 end

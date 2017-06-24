@@ -15,7 +15,9 @@
     <div class='container'>
       <h1>Chat Application Demo</h1>
       <%= yield %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      <% if signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      <% end %>
     </div>
   </body>
 </html>

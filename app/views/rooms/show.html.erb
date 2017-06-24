@@ -11,7 +11,9 @@
 <%= render 'messages' %>
 <div class = 'new-message'>
   <%= form_for([@room, @room.messages.build], remote: true, html: {class: 'form-inline message-form'}) do |f| %>
-    <%= f.text_area :text, class: 'form-control', rows: 1, cols: 70 %>
+    <%= f.text_area :text, class: 'form-control', rows: 1 %>
     <%= f.submit 'submit', class: 'btn btn-primary' %>
   <% end %>
+  <%= button_tag 'Clear', class: 'btn btn-default', id: 'clear-btn' %>
+
 </div> <!-- /new-message -->

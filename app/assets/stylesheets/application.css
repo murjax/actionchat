@@ -16,3 +16,16 @@
 h1 {
   text-align: center;
 }
+
+h2 {
+  text-align: center;
+}
+
+a {
+  color: blue;
+}
+
+a:hover {
+  color: black;
+  background-color: white;
+}
