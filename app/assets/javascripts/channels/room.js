@@ -23,5 +23,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
 
 $(document).on('turbolinks:load', function() {
   App.room.listen_to_messages();
+  var height = $(".message-list").height()
+    $(".message-list").scrollTop(height)
 });
 
