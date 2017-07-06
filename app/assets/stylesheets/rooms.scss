@@ -4,17 +4,24 @@
 
 .room-list {
   height: 600px;
-  position: block;
   width: 25%;
   float: left;
   border: 1px solid black;
 }
 
+.user-list {
+  height: 550px;
+  width: 25%;
+  float: right;
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+
 .message-list {
   height: 550px;
-  position: block;
-  width: 75%;
-  float: right;
+  width: 50%;
+  float: left;
   border: 1px solid black;
   overflow: scroll;
 }
@@ -22,7 +29,6 @@
 .new-message {
   height: 50px; 
   width: 75%;
-  position: block;
   float: right;
   padding-top: .5%;
   padding-left: .5%;
@@ -39,6 +45,7 @@
     }
   }
 }
+
 
 .clear-btn {
   display: inline;

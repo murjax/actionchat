@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
+  before_action :room_change, only: :show
   before_action :authenticate_user!
   # GET /rooms
   # GET /rooms.json
@@ -12,6 +13,7 @@ class RoomsController < ApplicationController
   def show
     @rooms = Room.all
     @messages = @room.messages.order("created_at ASC")
+    @users = User.where(room_id: @room.id)
   end
 
   # GET /rooms/new
@@ -72,5 +74,11 @@ class RoomsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
       params.require(:room).permit(:name)
+    end
+
+    def room_change
+      if current_user
+        current_user.change_room(@room)
+      end
     end
 end
