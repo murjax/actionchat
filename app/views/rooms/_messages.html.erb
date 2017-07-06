@@ -1,4 +1,4 @@
-<div class='message-list'>
+<div class='message-list' id='list-of-messages'>
   <% @messages.each do |message| %>
     <%= render partial: "messages/message", locals: { message: message } %>
   <% end %>

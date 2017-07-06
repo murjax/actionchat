@@ -7,4 +7,8 @@ class User < ApplicationRecord
   def change_room(room)
     update_attributes(room_id: room.id)
   end
+
+  def leave_room
+    update_attributes(room_id: null)
+  end
 end
