@@ -12,6 +12,7 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     // Called when there's incoming data on the websocket for this channel
     var height = document.getElementById("list-of-messages").scrollHeight;
     $(".message-list").scrollTop(height)
+    $(".user-list").hide().fadeIn('fast');
   },
 
   listen_to_messages: function() {

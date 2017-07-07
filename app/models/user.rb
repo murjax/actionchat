@@ -9,6 +9,6 @@ class User < ApplicationRecord
   end
 
   def leave_room
-    update_attributes(room_id: null)
+    update_attributes(room_id: nil)
   end
 end

@@ -7,6 +7,7 @@ class RoomChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    current_user.leave_room
   end
 
   def listen(data)
