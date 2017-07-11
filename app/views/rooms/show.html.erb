@@ -7,8 +7,10 @@
   <!-- <%#= link_to 'Edit', edit_room_path(@room) %> |
   <%#= link_to 'Back', rooms_path %> -->
   <%= link_to 'Create a New Room', new_room_path %>
+  
 </div>
 <%= render 'messages' %>
+<%= render 'userlist' %>
 <div class = 'new-message'>
   <%= form_for([@room, @room.messages.build], remote: true, html: {class: 'form-inline message-form'}) do |f| %>
     <%= f.text_area :text, class: 'form-control', rows: 1 %>
