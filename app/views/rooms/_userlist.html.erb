@@ -1,0 +1,8 @@
+<div class = 'user-list'>
+  <h4>Current Users</h4>
+  <ul class = 'user-list-ul'>
+    <% @users.each do |user| %>
+      <%= render 'user', user: user %>
+    <% end %>
+  </ul>
+</div>

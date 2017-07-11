@@ -78,7 +78,9 @@ class RoomsController < ApplicationController
 
     def room_change
       if current_user
+        RoomChannel.broadcast_to current_user.room_id, remove: true, user_id: current_user.id
         current_user.change_room(@room)
+        RoomChannel.broadcast_to @room.id, add: true, message: RoomsController.render(partial: 'rooms/user', locals: {user: current_user})
       end
     end
 end

@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        RoomChannel.broadcast_to @room.id, message: MessagesController.render(partial: 'messages/message', locals: {message: @message})
+        RoomChannel.broadcast_to @room.id, is_message: true, message: MessagesController.render(partial: 'messages/message', locals: {message: @message})
         format.html { redirect_to @room}
         format.json { render :show, status: :created, location: @message }
         format.js

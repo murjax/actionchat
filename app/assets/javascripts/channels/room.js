@@ -8,11 +8,18 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
   },
 
   received: function(data) {
-    $(".message-list").append(data.message);
-    // Called when there's incoming data on the websocket for this channel
-    var height = document.getElementById("list-of-messages").scrollHeight;
-    $(".message-list").scrollTop(height)
-    $(".user-list").hide().fadeIn('fast');
+    if(data.is_message) {
+      $(".message-list").append(data.message);
+      // Called when there's incoming data on the websocket for this channel
+      var height = document.getElementById("list-of-messages").scrollHeight;
+      $(".message-list").scrollTop(height);
+    }
+    if(data.remove) {
+      $("#user-" + data.user_id).remove();
+    }
+    if(data.add) {
+      $(".user-list-ul").append(data.message);
+    }
   },
 
   listen_to_messages: function() {

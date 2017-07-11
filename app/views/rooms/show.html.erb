@@ -10,14 +10,7 @@
   
 </div>
 <%= render 'messages' %>
-<div class = 'user-list'>
-  <h4>Current Users</h4>
-  <ul>
-    <% @users.each do |x| %>
-      <li><%= x.name %></li>
-    <% end %>
-  </ul>
-</div>
+<%= render 'userlist' %>
 <div class = 'new-message'>
   <%= form_for([@room, @room.messages.build], remote: true, html: {class: 'form-inline message-form'}) do |f| %>
     <%= f.text_area :text, class: 'form-control', rows: 1 %>
