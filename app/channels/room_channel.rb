@@ -7,6 +7,7 @@ class RoomChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    RoomChannel.broadcast_to current_user.room_id, remove: true, user_id: current_user.id
     current_user.leave_room
   end
 
