@@ -32,6 +32,9 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
+        Room.all.each do |room|
+          RoomChannel.broadcast_to room.id, addroom: true, message: RoomsController.render(partial: 'rooms/room', locals: {room: @room})
+        end
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else

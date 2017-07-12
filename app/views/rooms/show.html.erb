@@ -1,9 +1,6 @@
 <h2 data-room-id='<%= @room.id %>'><%= @room.name %></h2>
 <div class = 'room-list'>
-  <% @rooms.each do |x| %>
-    <%= link_to x.name, room_path(x.id) %>
-    <br/>
-  <% end %>
+  <%= render 'rooms' %>
   <!-- <%#= link_to 'Edit', edit_room_path(@room) %> |
   <%#= link_to 'Back', rooms_path %> -->
   <%= link_to 'Create a New Room', new_room_path %>

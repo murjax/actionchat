@@ -20,9 +20,13 @@ App.room = App.cable.subscriptions.create("RoomChannel", {
     if(data.add) {
       $(".user-list-ul").append(data.message);
     }
+    if (data.addroom) {
+      $(".therooms").append(data.message);
+    }
   },
 
   listen_to_messages: function() {
+    debugger
     return this.perform('listen', {
       room_id: $("[data-room-id]").data("room-id")
     });
