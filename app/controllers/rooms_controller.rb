@@ -68,7 +68,15 @@ class RoomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_room
-      @room = Room.find(params[:id])
+      if Room.all.empty?
+        Room.create(name: "new room")
+      end
+
+      if Room.exists? id: params[:id]
+        @room = Room.find(params[:id])
+      else
+        @room = Room.first
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
